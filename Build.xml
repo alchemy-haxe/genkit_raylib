@@ -1,3 +1,4 @@
+<!-- Copied from raylib-hx, all credit for build.xml goes to @github:foreignsasquatch -->
 <xml>
     <set name="raylib_folder" value="${haxelib:genkit_raylib}/lib/raylib/src" />
     <set name="glfw_folder" value="${haxelib:genkit_raylib}/lib/raylib/src/external/glfw" />
