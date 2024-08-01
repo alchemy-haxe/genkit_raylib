@@ -6,12 +6,12 @@ extern class Wave {
     public var sampleRate: cpp.UInt32;
     public var sampleSize: cpp.UInt32;
     public var channels: cpp.UInt32;
-    public var data: cpp.Pointer<Void>;
+    public var data: cpp.RawPointer<Void>;
     /**
      * Wave, audio wave data
      * @return cpp: Wave
      */
-    static inline function create(frameCount: cpp.UInt32, sampleRate: cpp.UInt32, sampleSize: cpp.UInt32, channels: cpp.UInt32, data: cpp.Pointer<Void>): Wave {
+    static inline function create(frameCount: cpp.UInt32, sampleRate: cpp.UInt32, sampleSize: cpp.UInt32, channels: cpp.UInt32, data: cpp.RawPointer<Void>): Wave {
         return untyped __cpp__("{ (unsigned int){0}, (unsigned int){1}, (unsigned int){2}, (unsigned int){3}, (void *){4} }", frameCount, sampleRate, sampleSize, channels, data);
     }
     

@@ -9,13 +9,13 @@ extern class VrDeviceInfo {
     public var eyeToScreenDistance: Float;
     public var lensSeparationDistance: Float;
     public var interpupillaryDistance: Float;
-    public var lensDistortionValues: cpp.Pointer<Float>;
-    public var chromaAbCorrection: cpp.Pointer<Float>;
+    public var lensDistortionValues: cpp.RawPointer<Float>;
+    public var chromaAbCorrection: cpp.RawPointer<Float>;
     /**
      * VrDeviceInfo, Head-Mounted-Display device parameters
      * @return cpp: VrDeviceInfo
      */
-    static inline function create(hResolution: Int, vResolution: Int, hScreenSize: Float, vScreenSize: Float, eyeToScreenDistance: Float, lensSeparationDistance: Float, interpupillaryDistance: Float, lensDistortionValues: cpp.Pointer<Float>, chromaAbCorrection: cpp.Pointer<Float>): VrDeviceInfo {
+    static inline function create(hResolution: Int, vResolution: Int, hScreenSize: Float, vScreenSize: Float, eyeToScreenDistance: Float, lensSeparationDistance: Float, interpupillaryDistance: Float, lensDistortionValues: cpp.RawPointer<Float>, chromaAbCorrection: cpp.RawPointer<Float>): VrDeviceInfo {
         return untyped __cpp__("{ (int){0}, (int){1}, (float){2}, (float){3}, (float){4}, (float){5}, (float){6}, (float[4]){7}, (float[4]){8} }", hResolution, vResolution, hScreenSize, vScreenSize, eyeToScreenDistance, lensSeparationDistance, interpupillaryDistance, lensDistortionValues, chromaAbCorrection);
     }
     

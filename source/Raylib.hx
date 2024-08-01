@@ -201,7 +201,7 @@ extern class Raylib {
      * @param count cpp: int
      */
     @:native("SetWindowIcons")
-    static function SetWindowIcons(images: cpp.Pointer<Image>, count: Int): Void;
+    static function SetWindowIcons(images: cpp.RawPointer<Image>, count: Int): Void;
     
     /**
      * Set title for window (only PLATFORM_DESKTOP and PLATFORM_WEB)
@@ -275,7 +275,7 @@ extern class Raylib {
      * @return cpp: void *
      */
     @:native("GetWindowHandle")
-    static function GetWindowHandle(): cpp.Pointer<Void>;
+    static function GetWindowHandle(): cpp.RawPointer<Void>;
     
     /**
      * Get current screen width
@@ -659,7 +659,7 @@ extern class Raylib {
      * @param uniformType cpp: int
      */
     @:native("SetShaderValue")
-    static function SetShaderValue(shader: Shader, locIndex: Int, value: cpp.Pointer<Void>, uniformType: Int): Void;
+    static function SetShaderValue(shader: Shader, locIndex: Int, value: cpp.RawPointer<Void>, uniformType: Int): Void;
     
     /**
      * Set shader uniform value vector
@@ -671,7 +671,7 @@ extern class Raylib {
      * @param count cpp: int
      */
     @:native("SetShaderValueV")
-    static function SetShaderValueV(shader: Shader, locIndex: Int, value: cpp.Pointer<Void>, uniformType: Int, count: Int): Void;
+    static function SetShaderValueV(shader: Shader, locIndex: Int, value: cpp.RawPointer<Void>, uniformType: Int, count: Int): Void;
     
     /**
      * Set shader uniform value (matrix 4x4)
@@ -851,7 +851,7 @@ extern class Raylib {
      * @param max cpp: int
      */
     @:native("LoadRandomSequence")
-    static function LoadRandomSequence(count: cpp.UInt32, min: Int, max: Int): cpp.Pointer<Int>;
+    static function LoadRandomSequence(count: cpp.UInt32, min: Int, max: Int): cpp.RawPointer<Int>;
     
     /**
      * Unload random values sequence
@@ -859,7 +859,7 @@ extern class Raylib {
      * @param sequence cpp: int *
      */
     @:native("UnloadRandomSequence")
-    static function UnloadRandomSequence(sequence: cpp.Pointer<Int>): Void;
+    static function UnloadRandomSequence(sequence: cpp.RawPointer<Int>): Void;
     
     /**
      * Takes a screenshot of current screen (filename extension defines format)
@@ -909,7 +909,7 @@ extern class Raylib {
      * @param size cpp: unsigned int
      */
     @:native("MemAlloc")
-    static function MemAlloc(size: cpp.UInt32): cpp.Pointer<Void>;
+    static function MemAlloc(size: cpp.UInt32): cpp.RawPointer<Void>;
     
     /**
      * Internal memory reallocator
@@ -918,7 +918,7 @@ extern class Raylib {
      * @param size cpp: unsigned int
      */
     @:native("MemRealloc")
-    static function MemRealloc(ptr: cpp.Pointer<Void>, size: cpp.UInt32): cpp.Pointer<Void>;
+    static function MemRealloc(ptr: cpp.RawPointer<Void>, size: cpp.UInt32): cpp.RawPointer<Void>;
     
     /**
      * Internal memory free
@@ -926,7 +926,7 @@ extern class Raylib {
      * @param ptr cpp: void *
      */
     @:native("MemFree")
-    static function MemFree(ptr: cpp.Pointer<Void>): Void;
+    static function MemFree(ptr: cpp.RawPointer<Void>): Void;
     
     /**
      * Set custom trace log
@@ -975,7 +975,7 @@ extern class Raylib {
      * @param dataSize cpp: int *
      */
     @:native("LoadFileData")
-    static function LoadFileData(fileName: String, dataSize: cpp.Pointer<Int>): cpp.Pointer<cpp.UInt8>;
+    static function LoadFileData(fileName: String, dataSize: cpp.RawPointer<Int>): cpp.RawPointer<cpp.UInt8>;
     
     /**
      * Unload file data allocated by LoadFileData()
@@ -983,7 +983,7 @@ extern class Raylib {
      * @param data cpp: unsigned char *
      */
     @:native("UnloadFileData")
-    static function UnloadFileData(data: cpp.Pointer<cpp.UInt8>): Void;
+    static function UnloadFileData(data: cpp.RawPointer<cpp.UInt8>): Void;
     
     /**
      * Save data to file from byte array (write), returns true on success
@@ -993,7 +993,7 @@ extern class Raylib {
      * @param dataSize cpp: int
      */
     @:native("SaveFileData")
-    static function SaveFileData(fileName: String, data: cpp.Pointer<Void>, dataSize: Int): Bool;
+    static function SaveFileData(fileName: String, data: cpp.RawPointer<Void>, dataSize: Int): Bool;
     
     /**
      * Export data to code (.h), returns true on success
@@ -1003,7 +1003,7 @@ extern class Raylib {
      * @param fileName cpp: const char *
      */
     @:native("ExportDataAsCode")
-    static function ExportDataAsCode(data: cpp.Pointer<cpp.UInt8>, dataSize: Int, fileName: String): Bool;
+    static function ExportDataAsCode(data: cpp.RawPointer<cpp.UInt8>, dataSize: Int, fileName: String): Bool;
     
     /**
      * Load text data from file (read), returns a '\0' terminated string
@@ -1205,7 +1205,7 @@ extern class Raylib {
      * @param compDataSize cpp: int *
      */
     @:native("CompressData")
-    static function CompressData(data: cpp.Pointer<cpp.UInt8>, dataSize: Int, compDataSize: cpp.Pointer<Int>): cpp.Pointer<cpp.UInt8>;
+    static function CompressData(data: cpp.RawPointer<cpp.UInt8>, dataSize: Int, compDataSize: cpp.RawPointer<Int>): cpp.RawPointer<cpp.UInt8>;
     
     /**
      * Decompress data (DEFLATE algorithm), memory must be MemFree()
@@ -1215,7 +1215,7 @@ extern class Raylib {
      * @param dataSize cpp: int *
      */
     @:native("DecompressData")
-    static function DecompressData(compData: cpp.Pointer<cpp.UInt8>, compDataSize: Int, dataSize: cpp.Pointer<Int>): cpp.Pointer<cpp.UInt8>;
+    static function DecompressData(compData: cpp.RawPointer<cpp.UInt8>, compDataSize: Int, dataSize: cpp.RawPointer<Int>): cpp.RawPointer<cpp.UInt8>;
     
     /**
      * Encode data to Base64 string, memory must be MemFree()
@@ -1225,7 +1225,7 @@ extern class Raylib {
      * @param outputSize cpp: int *
      */
     @:native("EncodeDataBase64")
-    static function EncodeDataBase64(data: cpp.Pointer<cpp.UInt8>, dataSize: Int, outputSize: cpp.Pointer<Int>): String;
+    static function EncodeDataBase64(data: cpp.RawPointer<cpp.UInt8>, dataSize: Int, outputSize: cpp.RawPointer<Int>): String;
     
     /**
      * Decode Base64 string data, memory must be MemFree()
@@ -1234,7 +1234,7 @@ extern class Raylib {
      * @param outputSize cpp: int *
      */
     @:native("DecodeDataBase64")
-    static function DecodeDataBase64(data: cpp.Pointer<cpp.UInt8>, outputSize: cpp.Pointer<Int>): cpp.Pointer<cpp.UInt8>;
+    static function DecodeDataBase64(data: cpp.RawPointer<cpp.UInt8>, outputSize: cpp.RawPointer<Int>): cpp.RawPointer<cpp.UInt8>;
     
     /**
      * Load automation events list from file, NULL for empty list, capacity = MAX_AUTOMATION_EVENTS
@@ -1267,7 +1267,7 @@ extern class Raylib {
      * @param list cpp: AutomationEventList *
      */
     @:native("SetAutomationEventList")
-    static function SetAutomationEventList(list: cpp.Pointer<AutomationEventList>): Void;
+    static function SetAutomationEventList(list: cpp.RawPointer<AutomationEventList>): Void;
     
     /**
      * Set automation event internal base frame to start recording
@@ -1666,7 +1666,7 @@ extern class Raylib {
      * @param mode cpp: int
      */
     @:native("UpdateCamera")
-    static function UpdateCamera(camera: cpp.Pointer<Camera3D>, mode: Int): Void;
+    static function UpdateCamera(camera: cpp.RawPointer<Camera3D>, mode: Int): Void;
     
     /**
      * Update camera movement/rotation
@@ -1677,7 +1677,7 @@ extern class Raylib {
      * @param zoom cpp: float
      */
     @:native("UpdateCameraPro")
-    static function UpdateCameraPro(camera: cpp.Pointer<Camera3D>, movement: Vector3, rotation: Vector3, zoom: Float): Void;
+    static function UpdateCameraPro(camera: cpp.RawPointer<Camera3D>, movement: Vector3, rotation: Vector3, zoom: Float): Void;
     
     /**
      * Set texture and rectangle to be used on shapes drawing
@@ -1762,7 +1762,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawLineStrip")
-    static function DrawLineStrip(points: cpp.Pointer<Vector2>, pointCount: Int, color: Color): Void;
+    static function DrawLineStrip(points: cpp.RawPointer<Vector2>, pointCount: Int, color: Color): Void;
     
     /**
      * Draw line segment cubic-bezier in-out interpolation
@@ -2073,7 +2073,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawTriangleFan")
-    static function DrawTriangleFan(points: cpp.Pointer<Vector2>, pointCount: Int, color: Color): Void;
+    static function DrawTriangleFan(points: cpp.RawPointer<Vector2>, pointCount: Int, color: Color): Void;
     
     /**
      * Draw a triangle strip defined by points
@@ -2083,7 +2083,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawTriangleStrip")
-    static function DrawTriangleStrip(points: cpp.Pointer<Vector2>, pointCount: Int, color: Color): Void;
+    static function DrawTriangleStrip(points: cpp.RawPointer<Vector2>, pointCount: Int, color: Color): Void;
     
     /**
      * Draw a regular polygon (Vector version)
@@ -2131,7 +2131,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawSplineLinear")
-    static function DrawSplineLinear(points: cpp.Pointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
+    static function DrawSplineLinear(points: cpp.RawPointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
     
     /**
      * Draw spline: B-Spline, minimum 4 points
@@ -2142,7 +2142,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawSplineBasis")
-    static function DrawSplineBasis(points: cpp.Pointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
+    static function DrawSplineBasis(points: cpp.RawPointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
     
     /**
      * Draw spline: Catmull-Rom, minimum 4 points
@@ -2153,7 +2153,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawSplineCatmullRom")
-    static function DrawSplineCatmullRom(points: cpp.Pointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
+    static function DrawSplineCatmullRom(points: cpp.RawPointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
     
     /**
      * Draw spline: Quadratic Bezier, minimum 3 points (1 control point): [p1, c2, p3, c4...]
@@ -2164,7 +2164,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawSplineBezierQuadratic")
-    static function DrawSplineBezierQuadratic(points: cpp.Pointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
+    static function DrawSplineBezierQuadratic(points: cpp.RawPointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
     
     /**
      * Draw spline: Cubic Bezier, minimum 4 points (2 control points): [p1, c2, c3, p4, c5, c6...]
@@ -2175,7 +2175,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawSplineBezierCubic")
-    static function DrawSplineBezierCubic(points: cpp.Pointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
+    static function DrawSplineBezierCubic(points: cpp.RawPointer<Vector2>, pointCount: Int, thick: Float, color: Color): Void;
     
     /**
      * Draw spline segment: Linear, 2 points
@@ -2364,7 +2364,7 @@ extern class Raylib {
      * @param pointCount cpp: int
      */
     @:native("CheckCollisionPointPoly")
-    static function CheckCollisionPointPoly(point: Vector2, points: cpp.Pointer<Vector2>, pointCount: Int): Bool;
+    static function CheckCollisionPointPoly(point: Vector2, points: cpp.RawPointer<Vector2>, pointCount: Int): Bool;
     
     /**
      * Check the collision between two lines defined by two points each, returns collision point by reference
@@ -2376,7 +2376,7 @@ extern class Raylib {
      * @param collisionPoint cpp: Vector2 *
      */
     @:native("CheckCollisionLines")
-    static function CheckCollisionLines(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: cpp.Pointer<Vector2>): Bool;
+    static function CheckCollisionLines(startPos1: Vector2, endPos1: Vector2, startPos2: Vector2, endPos2: Vector2, collisionPoint: cpp.RawPointer<Vector2>): Bool;
     
     /**
      * Check if point belongs to line created between two points [p1] and [p2] with defined margin in pixels [threshold]
@@ -2446,7 +2446,7 @@ extern class Raylib {
      * @param frames cpp: int *
      */
     @:native("LoadImageAnim")
-    static function LoadImageAnim(fileName: String, frames: cpp.Pointer<Int>): Image;
+    static function LoadImageAnim(fileName: String, frames: cpp.RawPointer<Int>): Image;
     
     /**
      * Load image sequence from memory buffer
@@ -2457,7 +2457,7 @@ extern class Raylib {
      * @param frames cpp: int *
      */
     @:native("LoadImageAnimFromMemory")
-    static function LoadImageAnimFromMemory(fileType: String, fileData: cpp.Pointer<cpp.UInt8>, dataSize: Int, frames: cpp.Pointer<Int>): Image;
+    static function LoadImageAnimFromMemory(fileType: String, fileData: cpp.RawPointer<cpp.UInt8>, dataSize: Int, frames: cpp.RawPointer<Int>): Image;
     
     /**
      * Load image from memory buffer, fileType refers to extension: i.e. '.png'
@@ -2467,7 +2467,7 @@ extern class Raylib {
      * @param dataSize cpp: int
      */
     @:native("LoadImageFromMemory")
-    static function LoadImageFromMemory(fileType: String, fileData: cpp.Pointer<cpp.UInt8>, dataSize: Int): Image;
+    static function LoadImageFromMemory(fileType: String, fileData: cpp.RawPointer<cpp.UInt8>, dataSize: Int): Image;
     
     /**
      * Load image from GPU texture data
@@ -2517,7 +2517,7 @@ extern class Raylib {
      * @param fileSize cpp: int *
      */
     @:native("ExportImageToMemory")
-    static function ExportImageToMemory(image: Image, fileType: String, fileSize: cpp.Pointer<Int>): cpp.Pointer<cpp.UInt8>;
+    static function ExportImageToMemory(image: Image, fileType: String, fileSize: cpp.RawPointer<Int>): cpp.RawPointer<cpp.UInt8>;
     
     /**
      * Export image as code file defining an array of bytes, returns true on success
@@ -2684,7 +2684,7 @@ extern class Raylib {
      * @param newFormat cpp: int
      */
     @:native("ImageFormat")
-    static function ImageFormat(image: cpp.Pointer<Image>, newFormat: Int): Void;
+    static function ImageFormat(image: cpp.RawPointer<Image>, newFormat: Int): Void;
     
     /**
      * Convert image to POT (power-of-two)
@@ -2693,7 +2693,7 @@ extern class Raylib {
      * @param fill cpp: Color
      */
     @:native("ImageToPOT")
-    static function ImageToPOT(image: cpp.Pointer<Image>, fill: Color): Void;
+    static function ImageToPOT(image: cpp.RawPointer<Image>, fill: Color): Void;
     
     /**
      * Crop an image to a defined rectangle
@@ -2702,7 +2702,7 @@ extern class Raylib {
      * @param crop cpp: Rectangle
      */
     @:native("ImageCrop")
-    static function ImageCrop(image: cpp.Pointer<Image>, crop: Rectangle): Void;
+    static function ImageCrop(image: cpp.RawPointer<Image>, crop: Rectangle): Void;
     
     /**
      * Crop image depending on alpha value
@@ -2711,7 +2711,7 @@ extern class Raylib {
      * @param threshold cpp: float
      */
     @:native("ImageAlphaCrop")
-    static function ImageAlphaCrop(image: cpp.Pointer<Image>, threshold: Float): Void;
+    static function ImageAlphaCrop(image: cpp.RawPointer<Image>, threshold: Float): Void;
     
     /**
      * Clear alpha channel to desired color
@@ -2721,7 +2721,7 @@ extern class Raylib {
      * @param threshold cpp: float
      */
     @:native("ImageAlphaClear")
-    static function ImageAlphaClear(image: cpp.Pointer<Image>, color: Color, threshold: Float): Void;
+    static function ImageAlphaClear(image: cpp.RawPointer<Image>, color: Color, threshold: Float): Void;
     
     /**
      * Apply alpha mask to image
@@ -2730,7 +2730,7 @@ extern class Raylib {
      * @param alphaMask cpp: Image
      */
     @:native("ImageAlphaMask")
-    static function ImageAlphaMask(image: cpp.Pointer<Image>, alphaMask: Image): Void;
+    static function ImageAlphaMask(image: cpp.RawPointer<Image>, alphaMask: Image): Void;
     
     /**
      * Premultiply alpha channel
@@ -2738,7 +2738,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageAlphaPremultiply")
-    static function ImageAlphaPremultiply(image: cpp.Pointer<Image>): Void;
+    static function ImageAlphaPremultiply(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Apply Gaussian blur using a box blur approximation
@@ -2747,7 +2747,7 @@ extern class Raylib {
      * @param blurSize cpp: int
      */
     @:native("ImageBlurGaussian")
-    static function ImageBlurGaussian(image: cpp.Pointer<Image>, blurSize: Int): Void;
+    static function ImageBlurGaussian(image: cpp.RawPointer<Image>, blurSize: Int): Void;
     
     /**
      * Apply custom square convolution kernel to image
@@ -2757,7 +2757,7 @@ extern class Raylib {
      * @param kernelSize cpp: int
      */
     @:native("ImageKernelConvolution")
-    static function ImageKernelConvolution(image: cpp.Pointer<Image>, kernel: cpp.Pointer<Float>, kernelSize: Int): Void;
+    static function ImageKernelConvolution(image: cpp.RawPointer<Image>, kernel: cpp.RawPointer<Float>, kernelSize: Int): Void;
     
     /**
      * Resize image (Bicubic scaling algorithm)
@@ -2767,7 +2767,7 @@ extern class Raylib {
      * @param newHeight cpp: int
      */
     @:native("ImageResize")
-    static function ImageResize(image: cpp.Pointer<Image>, newWidth: Int, newHeight: Int): Void;
+    static function ImageResize(image: cpp.RawPointer<Image>, newWidth: Int, newHeight: Int): Void;
     
     /**
      * Resize image (Nearest-Neighbor scaling algorithm)
@@ -2777,7 +2777,7 @@ extern class Raylib {
      * @param newHeight cpp: int
      */
     @:native("ImageResizeNN")
-    static function ImageResizeNN(image: cpp.Pointer<Image>, newWidth: Int, newHeight: Int): Void;
+    static function ImageResizeNN(image: cpp.RawPointer<Image>, newWidth: Int, newHeight: Int): Void;
     
     /**
      * Resize canvas and fill with color
@@ -2790,7 +2790,7 @@ extern class Raylib {
      * @param fill cpp: Color
      */
     @:native("ImageResizeCanvas")
-    static function ImageResizeCanvas(image: cpp.Pointer<Image>, newWidth: Int, newHeight: Int, offsetX: Int, offsetY: Int, fill: Color): Void;
+    static function ImageResizeCanvas(image: cpp.RawPointer<Image>, newWidth: Int, newHeight: Int, offsetX: Int, offsetY: Int, fill: Color): Void;
     
     /**
      * Compute all mipmap levels for a provided image
@@ -2798,7 +2798,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageMipmaps")
-    static function ImageMipmaps(image: cpp.Pointer<Image>): Void;
+    static function ImageMipmaps(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
@@ -2810,7 +2810,7 @@ extern class Raylib {
      * @param aBpp cpp: int
      */
     @:native("ImageDither")
-    static function ImageDither(image: cpp.Pointer<Image>, rBpp: Int, gBpp: Int, bBpp: Int, aBpp: Int): Void;
+    static function ImageDither(image: cpp.RawPointer<Image>, rBpp: Int, gBpp: Int, bBpp: Int, aBpp: Int): Void;
     
     /**
      * Flip image vertically
@@ -2818,7 +2818,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageFlipVertical")
-    static function ImageFlipVertical(image: cpp.Pointer<Image>): Void;
+    static function ImageFlipVertical(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Flip image horizontally
@@ -2826,7 +2826,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageFlipHorizontal")
-    static function ImageFlipHorizontal(image: cpp.Pointer<Image>): Void;
+    static function ImageFlipHorizontal(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Rotate image by input angle in degrees (-359 to 359)
@@ -2835,7 +2835,7 @@ extern class Raylib {
      * @param degrees cpp: int
      */
     @:native("ImageRotate")
-    static function ImageRotate(image: cpp.Pointer<Image>, degrees: Int): Void;
+    static function ImageRotate(image: cpp.RawPointer<Image>, degrees: Int): Void;
     
     /**
      * Rotate image clockwise 90deg
@@ -2843,7 +2843,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageRotateCW")
-    static function ImageRotateCW(image: cpp.Pointer<Image>): Void;
+    static function ImageRotateCW(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Rotate image counter-clockwise 90deg
@@ -2851,7 +2851,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageRotateCCW")
-    static function ImageRotateCCW(image: cpp.Pointer<Image>): Void;
+    static function ImageRotateCCW(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Modify image color: tint
@@ -2860,7 +2860,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageColorTint")
-    static function ImageColorTint(image: cpp.Pointer<Image>, color: Color): Void;
+    static function ImageColorTint(image: cpp.RawPointer<Image>, color: Color): Void;
     
     /**
      * Modify image color: invert
@@ -2868,7 +2868,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageColorInvert")
-    static function ImageColorInvert(image: cpp.Pointer<Image>): Void;
+    static function ImageColorInvert(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Modify image color: grayscale
@@ -2876,7 +2876,7 @@ extern class Raylib {
      * @param image cpp: Image *
      */
     @:native("ImageColorGrayscale")
-    static function ImageColorGrayscale(image: cpp.Pointer<Image>): Void;
+    static function ImageColorGrayscale(image: cpp.RawPointer<Image>): Void;
     
     /**
      * Modify image color: contrast (-100 to 100)
@@ -2885,7 +2885,7 @@ extern class Raylib {
      * @param contrast cpp: float
      */
     @:native("ImageColorContrast")
-    static function ImageColorContrast(image: cpp.Pointer<Image>, contrast: Float): Void;
+    static function ImageColorContrast(image: cpp.RawPointer<Image>, contrast: Float): Void;
     
     /**
      * Modify image color: brightness (-255 to 255)
@@ -2894,7 +2894,7 @@ extern class Raylib {
      * @param brightness cpp: int
      */
     @:native("ImageColorBrightness")
-    static function ImageColorBrightness(image: cpp.Pointer<Image>, brightness: Int): Void;
+    static function ImageColorBrightness(image: cpp.RawPointer<Image>, brightness: Int): Void;
     
     /**
      * Modify image color: replace color
@@ -2904,7 +2904,7 @@ extern class Raylib {
      * @param replace cpp: Color
      */
     @:native("ImageColorReplace")
-    static function ImageColorReplace(image: cpp.Pointer<Image>, color: Color, replace: Color): Void;
+    static function ImageColorReplace(image: cpp.RawPointer<Image>, color: Color, replace: Color): Void;
     
     /**
      * Load color data from image as a Color array (RGBA - 32bit)
@@ -2912,7 +2912,7 @@ extern class Raylib {
      * @param image cpp: Image
      */
     @:native("LoadImageColors")
-    static function LoadImageColors(image: Image): cpp.Pointer<Color>;
+    static function LoadImageColors(image: Image): cpp.RawPointer<Color>;
     
     /**
      * Load colors palette from image as a Color array (RGBA - 32bit)
@@ -2922,7 +2922,7 @@ extern class Raylib {
      * @param colorCount cpp: int *
      */
     @:native("LoadImagePalette")
-    static function LoadImagePalette(image: Image, maxPaletteSize: Int, colorCount: cpp.Pointer<Int>): cpp.Pointer<Color>;
+    static function LoadImagePalette(image: Image, maxPaletteSize: Int, colorCount: cpp.RawPointer<Int>): cpp.RawPointer<Color>;
     
     /**
      * Unload color data loaded with LoadImageColors()
@@ -2930,7 +2930,7 @@ extern class Raylib {
      * @param colors cpp: Color *
      */
     @:native("UnloadImageColors")
-    static function UnloadImageColors(colors: cpp.Pointer<Color>): Void;
+    static function UnloadImageColors(colors: cpp.RawPointer<Color>): Void;
     
     /**
      * Unload colors palette loaded with LoadImagePalette()
@@ -2938,7 +2938,7 @@ extern class Raylib {
      * @param colors cpp: Color *
      */
     @:native("UnloadImagePalette")
-    static function UnloadImagePalette(colors: cpp.Pointer<Color>): Void;
+    static function UnloadImagePalette(colors: cpp.RawPointer<Color>): Void;
     
     /**
      * Get image alpha border rectangle
@@ -2966,7 +2966,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageClearBackground")
-    static function ImageClearBackground(dst: cpp.Pointer<Image>, color: Color): Void;
+    static function ImageClearBackground(dst: cpp.RawPointer<Image>, color: Color): Void;
     
     /**
      * Draw pixel within an image
@@ -2977,7 +2977,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawPixel")
-    static function ImageDrawPixel(dst: cpp.Pointer<Image>, posX: Int, posY: Int, color: Color): Void;
+    static function ImageDrawPixel(dst: cpp.RawPointer<Image>, posX: Int, posY: Int, color: Color): Void;
     
     /**
      * Draw pixel within an image (Vector version)
@@ -2987,7 +2987,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawPixelV")
-    static function ImageDrawPixelV(dst: cpp.Pointer<Image>, position: Vector2, color: Color): Void;
+    static function ImageDrawPixelV(dst: cpp.RawPointer<Image>, position: Vector2, color: Color): Void;
     
     /**
      * Draw line within an image
@@ -3000,7 +3000,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawLine")
-    static function ImageDrawLine(dst: cpp.Pointer<Image>, startPosX: Int, startPosY: Int, endPosX: Int, endPosY: Int, color: Color): Void;
+    static function ImageDrawLine(dst: cpp.RawPointer<Image>, startPosX: Int, startPosY: Int, endPosX: Int, endPosY: Int, color: Color): Void;
     
     /**
      * Draw line within an image (Vector version)
@@ -3011,7 +3011,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawLineV")
-    static function ImageDrawLineV(dst: cpp.Pointer<Image>, start: Vector2, end: Vector2, color: Color): Void;
+    static function ImageDrawLineV(dst: cpp.RawPointer<Image>, start: Vector2, end: Vector2, color: Color): Void;
     
     /**
      * Draw a line defining thickness within an image
@@ -3023,7 +3023,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawLineEx")
-    static function ImageDrawLineEx(dst: cpp.Pointer<Image>, start: Vector2, end: Vector2, thick: Int, color: Color): Void;
+    static function ImageDrawLineEx(dst: cpp.RawPointer<Image>, start: Vector2, end: Vector2, thick: Int, color: Color): Void;
     
     /**
      * Draw a filled circle within an image
@@ -3035,7 +3035,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawCircle")
-    static function ImageDrawCircle(dst: cpp.Pointer<Image>, centerX: Int, centerY: Int, radius: Int, color: Color): Void;
+    static function ImageDrawCircle(dst: cpp.RawPointer<Image>, centerX: Int, centerY: Int, radius: Int, color: Color): Void;
     
     /**
      * Draw a filled circle within an image (Vector version)
@@ -3046,7 +3046,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawCircleV")
-    static function ImageDrawCircleV(dst: cpp.Pointer<Image>, center: Vector2, radius: Int, color: Color): Void;
+    static function ImageDrawCircleV(dst: cpp.RawPointer<Image>, center: Vector2, radius: Int, color: Color): Void;
     
     /**
      * Draw circle outline within an image
@@ -3058,7 +3058,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawCircleLines")
-    static function ImageDrawCircleLines(dst: cpp.Pointer<Image>, centerX: Int, centerY: Int, radius: Int, color: Color): Void;
+    static function ImageDrawCircleLines(dst: cpp.RawPointer<Image>, centerX: Int, centerY: Int, radius: Int, color: Color): Void;
     
     /**
      * Draw circle outline within an image (Vector version)
@@ -3069,7 +3069,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawCircleLinesV")
-    static function ImageDrawCircleLinesV(dst: cpp.Pointer<Image>, center: Vector2, radius: Int, color: Color): Void;
+    static function ImageDrawCircleLinesV(dst: cpp.RawPointer<Image>, center: Vector2, radius: Int, color: Color): Void;
     
     /**
      * Draw rectangle within an image
@@ -3082,7 +3082,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawRectangle")
-    static function ImageDrawRectangle(dst: cpp.Pointer<Image>, posX: Int, posY: Int, width: Int, height: Int, color: Color): Void;
+    static function ImageDrawRectangle(dst: cpp.RawPointer<Image>, posX: Int, posY: Int, width: Int, height: Int, color: Color): Void;
     
     /**
      * Draw rectangle within an image (Vector version)
@@ -3093,7 +3093,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawRectangleV")
-    static function ImageDrawRectangleV(dst: cpp.Pointer<Image>, position: Vector2, size: Vector2, color: Color): Void;
+    static function ImageDrawRectangleV(dst: cpp.RawPointer<Image>, position: Vector2, size: Vector2, color: Color): Void;
     
     /**
      * Draw rectangle within an image
@@ -3103,7 +3103,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawRectangleRec")
-    static function ImageDrawRectangleRec(dst: cpp.Pointer<Image>, rec: Rectangle, color: Color): Void;
+    static function ImageDrawRectangleRec(dst: cpp.RawPointer<Image>, rec: Rectangle, color: Color): Void;
     
     /**
      * Draw rectangle lines within an image
@@ -3114,7 +3114,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawRectangleLines")
-    static function ImageDrawRectangleLines(dst: cpp.Pointer<Image>, rec: Rectangle, thick: Int, color: Color): Void;
+    static function ImageDrawRectangleLines(dst: cpp.RawPointer<Image>, rec: Rectangle, thick: Int, color: Color): Void;
     
     /**
      * Draw triangle within an image
@@ -3126,7 +3126,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawTriangle")
-    static function ImageDrawTriangle(dst: cpp.Pointer<Image>, v1: Vector2, v2: Vector2, v3: Vector2, color: Color): Void;
+    static function ImageDrawTriangle(dst: cpp.RawPointer<Image>, v1: Vector2, v2: Vector2, v3: Vector2, color: Color): Void;
     
     /**
      * Draw triangle with interpolated colors within an image
@@ -3140,7 +3140,7 @@ extern class Raylib {
      * @param c3 cpp: Color
      */
     @:native("ImageDrawTriangleEx")
-    static function ImageDrawTriangleEx(dst: cpp.Pointer<Image>, v1: Vector2, v2: Vector2, v3: Vector2, c1: Color, c2: Color, c3: Color): Void;
+    static function ImageDrawTriangleEx(dst: cpp.RawPointer<Image>, v1: Vector2, v2: Vector2, v3: Vector2, c1: Color, c2: Color, c3: Color): Void;
     
     /**
      * Draw triangle outline within an image
@@ -3152,7 +3152,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawTriangleLines")
-    static function ImageDrawTriangleLines(dst: cpp.Pointer<Image>, v1: Vector2, v2: Vector2, v3: Vector2, color: Color): Void;
+    static function ImageDrawTriangleLines(dst: cpp.RawPointer<Image>, v1: Vector2, v2: Vector2, v3: Vector2, color: Color): Void;
     
     /**
      * Draw a triangle fan defined by points within an image (first vertex is the center)
@@ -3163,7 +3163,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawTriangleFan")
-    static function ImageDrawTriangleFan(dst: cpp.Pointer<Image>, points: cpp.Pointer<Vector2>, pointCount: Int, color: Color): Void;
+    static function ImageDrawTriangleFan(dst: cpp.RawPointer<Image>, points: cpp.RawPointer<Vector2>, pointCount: Int, color: Color): Void;
     
     /**
      * Draw a triangle strip defined by points within an image
@@ -3174,7 +3174,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawTriangleStrip")
-    static function ImageDrawTriangleStrip(dst: cpp.Pointer<Image>, points: cpp.Pointer<Vector2>, pointCount: Int, color: Color): Void;
+    static function ImageDrawTriangleStrip(dst: cpp.RawPointer<Image>, points: cpp.RawPointer<Vector2>, pointCount: Int, color: Color): Void;
     
     /**
      * Draw a source image within a destination image (tint applied to source)
@@ -3186,7 +3186,7 @@ extern class Raylib {
      * @param tint cpp: Color
      */
     @:native("ImageDraw")
-    static function ImageDraw(dst: cpp.Pointer<Image>, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color): Void;
+    static function ImageDraw(dst: cpp.RawPointer<Image>, src: Image, srcRec: Rectangle, dstRec: Rectangle, tint: Color): Void;
     
     /**
      * Draw text (using default font) within an image (destination)
@@ -3199,7 +3199,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("ImageDrawText")
-    static function ImageDrawText(dst: cpp.Pointer<Image>, text: String, posX: Int, posY: Int, fontSize: Int, color: Color): Void;
+    static function ImageDrawText(dst: cpp.RawPointer<Image>, text: String, posX: Int, posY: Int, fontSize: Int, color: Color): Void;
     
     /**
      * Draw text (custom sprite font) within an image (destination)
@@ -3213,7 +3213,7 @@ extern class Raylib {
      * @param tint cpp: Color
      */
     @:native("ImageDrawTextEx")
-    static function ImageDrawTextEx(dst: cpp.Pointer<Image>, font: Font, text: String, position: Vector2, fontSize: Float, spacing: Float, tint: Color): Void;
+    static function ImageDrawTextEx(dst: cpp.RawPointer<Image>, font: Font, text: String, position: Vector2, fontSize: Float, spacing: Float, tint: Color): Void;
     
     /**
      * Load texture from file into GPU memory (VRAM)
@@ -3288,7 +3288,7 @@ extern class Raylib {
      * @param pixels cpp: const void *
      */
     @:native("UpdateTexture")
-    static function UpdateTexture(texture: Texture, pixels: cpp.Pointer<Void>): Void;
+    static function UpdateTexture(texture: Texture, pixels: cpp.RawPointer<Void>): Void;
     
     /**
      * Update GPU texture rectangle with new data
@@ -3298,7 +3298,7 @@ extern class Raylib {
      * @param pixels cpp: const void *
      */
     @:native("UpdateTextureRec")
-    static function UpdateTextureRec(texture: Texture, rec: Rectangle, pixels: cpp.Pointer<Void>): Void;
+    static function UpdateTextureRec(texture: Texture, rec: Rectangle, pixels: cpp.RawPointer<Void>): Void;
     
     /**
      * Generate GPU mipmaps for a texture
@@ -3306,7 +3306,7 @@ extern class Raylib {
      * @param texture cpp: Texture2D *
      */
     @:native("GenTextureMipmaps")
-    static function GenTextureMipmaps(texture: cpp.Pointer<Texture>): Void;
+    static function GenTextureMipmaps(texture: cpp.RawPointer<Texture>): Void;
     
     /**
      * Set texture scaling filter mode
@@ -3517,7 +3517,7 @@ extern class Raylib {
      * @param format cpp: int
      */
     @:native("GetPixelColor")
-    static function GetPixelColor(srcPtr: cpp.Pointer<Void>, format: Int): Color;
+    static function GetPixelColor(srcPtr: cpp.RawPointer<Void>, format: Int): Color;
     
     /**
      * Set color formatted into destination pixel pointer
@@ -3527,7 +3527,7 @@ extern class Raylib {
      * @param format cpp: int
      */
     @:native("SetPixelColor")
-    static function SetPixelColor(dstPtr: cpp.Pointer<Void>, color: Color, format: Int): Void;
+    static function SetPixelColor(dstPtr: cpp.RawPointer<Void>, color: Color, format: Int): Void;
     
     /**
      * Get pixel data size in bytes for certain format
@@ -3563,7 +3563,7 @@ extern class Raylib {
      * @param codepointCount cpp: int
      */
     @:native("LoadFontEx")
-    static function LoadFontEx(fileName: String, fontSize: Int, codepoints: cpp.Pointer<Int>, codepointCount: Int): Font;
+    static function LoadFontEx(fileName: String, fontSize: Int, codepoints: cpp.RawPointer<Int>, codepointCount: Int): Font;
     
     /**
      * Load font from Image (XNA style)
@@ -3586,7 +3586,7 @@ extern class Raylib {
      * @param codepointCount cpp: int
      */
     @:native("LoadFontFromMemory")
-    static function LoadFontFromMemory(fileType: String, fileData: cpp.Pointer<cpp.UInt8>, dataSize: Int, fontSize: Int, codepoints: cpp.Pointer<Int>, codepointCount: Int): Font;
+    static function LoadFontFromMemory(fileType: String, fileData: cpp.RawPointer<cpp.UInt8>, dataSize: Int, fontSize: Int, codepoints: cpp.RawPointer<Int>, codepointCount: Int): Font;
     
     /**
      * Check if a font is ready
@@ -3607,7 +3607,7 @@ extern class Raylib {
      * @param type cpp: int
      */
     @:native("LoadFontData")
-    static function LoadFontData(fileData: cpp.Pointer<cpp.UInt8>, dataSize: Int, fontSize: Int, codepoints: cpp.Pointer<Int>, codepointCount: Int, type: Int): cpp.Pointer<GlyphInfo>;
+    static function LoadFontData(fileData: cpp.RawPointer<cpp.UInt8>, dataSize: Int, fontSize: Int, codepoints: cpp.RawPointer<Int>, codepointCount: Int, type: Int): cpp.RawPointer<GlyphInfo>;
     
     /**
      * Generate image font atlas using chars info
@@ -3620,7 +3620,7 @@ extern class Raylib {
      * @param packMethod cpp: int
      */
     @:native("GenImageFontAtlas")
-    static function GenImageFontAtlas(glyphs: cpp.Pointer<GlyphInfo>, glyphRecs: cpp.Pointer<Rectangle>, glyphCount: Int, fontSize: Int, padding: Int, packMethod: Int): Image;
+    static function GenImageFontAtlas(glyphs: cpp.RawPointer<GlyphInfo>, glyphRecs: cpp.RawPointer<Rectangle>, glyphCount: Int, fontSize: Int, padding: Int, packMethod: Int): Image;
     
     /**
      * Unload font chars info data (RAM)
@@ -3629,7 +3629,7 @@ extern class Raylib {
      * @param glyphCount cpp: int
      */
     @:native("UnloadFontData")
-    static function UnloadFontData(glyphs: cpp.Pointer<GlyphInfo>, glyphCount: Int): Void;
+    static function UnloadFontData(glyphs: cpp.RawPointer<GlyphInfo>, glyphCount: Int): Void;
     
     /**
      * Unload font from GPU memory (VRAM)
@@ -3721,7 +3721,7 @@ extern class Raylib {
      * @param tint cpp: Color
      */
     @:native("DrawTextCodepoints")
-    static function DrawTextCodepoints(font: Font, codepoints: cpp.Pointer<Int>, codepointCount: Int, position: Vector2, fontSize: Float, spacing: Float, tint: Color): Void;
+    static function DrawTextCodepoints(font: Font, codepoints: cpp.RawPointer<Int>, codepointCount: Int, position: Vector2, fontSize: Float, spacing: Float, tint: Color): Void;
     
     /**
      * Set vertical line spacing when drawing with line-breaks
@@ -3785,7 +3785,7 @@ extern class Raylib {
      * @param length cpp: int
      */
     @:native("LoadUTF8")
-    static function LoadUTF8(codepoints: cpp.Pointer<Int>, length: Int): String;
+    static function LoadUTF8(codepoints: cpp.RawPointer<Int>, length: Int): String;
     
     /**
      * Unload UTF-8 text encoded from codepoints array
@@ -3802,7 +3802,7 @@ extern class Raylib {
      * @param count cpp: int *
      */
     @:native("LoadCodepoints")
-    static function LoadCodepoints(text: String, count: cpp.Pointer<Int>): cpp.Pointer<Int>;
+    static function LoadCodepoints(text: String, count: cpp.RawPointer<Int>): cpp.RawPointer<Int>;
     
     /**
      * Unload codepoints data from memory
@@ -3810,7 +3810,7 @@ extern class Raylib {
      * @param codepoints cpp: int *
      */
     @:native("UnloadCodepoints")
-    static function UnloadCodepoints(codepoints: cpp.Pointer<Int>): Void;
+    static function UnloadCodepoints(codepoints: cpp.RawPointer<Int>): Void;
     
     /**
      * Get total number of codepoints in a UTF-8 encoded string
@@ -3827,7 +3827,7 @@ extern class Raylib {
      * @param codepointSize cpp: int *
      */
     @:native("GetCodepoint")
-    static function GetCodepoint(text: String, codepointSize: cpp.Pointer<Int>): Int;
+    static function GetCodepoint(text: String, codepointSize: cpp.RawPointer<Int>): Int;
     
     /**
      * Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
@@ -3836,7 +3836,7 @@ extern class Raylib {
      * @param codepointSize cpp: int *
      */
     @:native("GetCodepointNext")
-    static function GetCodepointNext(text: String, codepointSize: cpp.Pointer<Int>): Int;
+    static function GetCodepointNext(text: String, codepointSize: cpp.RawPointer<Int>): Int;
     
     /**
      * Get previous codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
@@ -3845,7 +3845,7 @@ extern class Raylib {
      * @param codepointSize cpp: int *
      */
     @:native("GetCodepointPrevious")
-    static function GetCodepointPrevious(text: String, codepointSize: cpp.Pointer<Int>): Int;
+    static function GetCodepointPrevious(text: String, codepointSize: cpp.RawPointer<Int>): Int;
     
     /**
      * Encode one codepoint into UTF-8 byte array (array length returned as parameter)
@@ -3854,7 +3854,7 @@ extern class Raylib {
      * @param utf8Size cpp: int *
      */
     @:native("CodepointToUTF8")
-    static function CodepointToUTF8(codepoint: Int, utf8Size: cpp.Pointer<Int>): String;
+    static function CodepointToUTF8(codepoint: Int, utf8Size: cpp.RawPointer<Int>): String;
     
     /**
      * Copy one string to another, returns bytes copied
@@ -3939,7 +3939,7 @@ extern class Raylib {
      * @param count cpp: int *
      */
     @:native("TextSplit")
-    static function TextSplit(text: String, delimiter: cpp.Char, count: cpp.Pointer<Int>): String;
+    static function TextSplit(text: String, delimiter: cpp.Char, count: cpp.RawPointer<Int>): String;
     
     /**
      * Append text at specific position and move cursor!
@@ -3949,7 +3949,7 @@ extern class Raylib {
      * @param position cpp: int *
      */
     @:native("TextAppend")
-    static function TextAppend(text: String, append: String, position: cpp.Pointer<Int>): Void;
+    static function TextAppend(text: String, append: String, position: cpp.RawPointer<Int>): Void;
     
     /**
      * Find first text occurrence within a string
@@ -4066,7 +4066,7 @@ extern class Raylib {
      * @param color cpp: Color
      */
     @:native("DrawTriangleStrip3D")
-    static function DrawTriangleStrip3D(points: cpp.Pointer<Vector3>, pointCount: Int, color: Color): Void;
+    static function DrawTriangleStrip3D(points: cpp.RawPointer<Vector3>, pointCount: Int, color: Color): Void;
     
     /**
      * Draw cube
@@ -4397,7 +4397,7 @@ extern class Raylib {
      * @param dynamic cpp: bool
      */
     @:native("UploadMesh")
-    static function UploadMesh(mesh: cpp.Pointer<Mesh>, _dynamic: Bool): Void;
+    static function UploadMesh(mesh: cpp.RawPointer<Mesh>, _dynamic: Bool): Void;
     
     /**
      * Update mesh vertex data in GPU for a specific buffer index
@@ -4409,7 +4409,7 @@ extern class Raylib {
      * @param offset cpp: int
      */
     @:native("UpdateMeshBuffer")
-    static function UpdateMeshBuffer(mesh: Mesh, index: Int, data: cpp.Pointer<Void>, dataSize: Int, offset: Int): Void;
+    static function UpdateMeshBuffer(mesh: Mesh, index: Int, data: cpp.RawPointer<Void>, dataSize: Int, offset: Int): Void;
     
     /**
      * Unload mesh data from CPU and GPU
@@ -4438,7 +4438,7 @@ extern class Raylib {
      * @param instances cpp: int
      */
     @:native("DrawMeshInstanced")
-    static function DrawMeshInstanced(mesh: Mesh, material: Material, transforms: cpp.Pointer<Matrix>, instances: Int): Void;
+    static function DrawMeshInstanced(mesh: Mesh, material: Material, transforms: cpp.RawPointer<Matrix>, instances: Int): Void;
     
     /**
      * Compute mesh bounding box limits
@@ -4454,7 +4454,7 @@ extern class Raylib {
      * @param mesh cpp: Mesh *
      */
     @:native("GenMeshTangents")
-    static function GenMeshTangents(mesh: cpp.Pointer<Mesh>): Void;
+    static function GenMeshTangents(mesh: cpp.RawPointer<Mesh>): Void;
     
     /**
      * Export mesh data to file, returns true on success
@@ -4591,7 +4591,7 @@ extern class Raylib {
      * @param materialCount cpp: int *
      */
     @:native("LoadMaterials")
-    static function LoadMaterials(fileName: String, materialCount: cpp.Pointer<Int>): cpp.Pointer<Material>;
+    static function LoadMaterials(fileName: String, materialCount: cpp.RawPointer<Int>): cpp.RawPointer<Material>;
     
     /**
      * Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
@@ -4624,7 +4624,7 @@ extern class Raylib {
      * @param texture cpp: Texture2D
      */
     @:native("SetMaterialTexture")
-    static function SetMaterialTexture(material: cpp.Pointer<Material>, mapType: Int, texture: Texture): Void;
+    static function SetMaterialTexture(material: cpp.RawPointer<Material>, mapType: Int, texture: Texture): Void;
     
     /**
      * Set material for a mesh
@@ -4634,7 +4634,7 @@ extern class Raylib {
      * @param materialId cpp: int
      */
     @:native("SetModelMeshMaterial")
-    static function SetModelMeshMaterial(model: cpp.Pointer<Model>, meshId: Int, materialId: Int): Void;
+    static function SetModelMeshMaterial(model: cpp.RawPointer<Model>, meshId: Int, materialId: Int): Void;
     
     /**
      * Load model animations from file
@@ -4643,7 +4643,7 @@ extern class Raylib {
      * @param animCount cpp: int *
      */
     @:native("LoadModelAnimations")
-    static function LoadModelAnimations(fileName: String, animCount: cpp.Pointer<Int>): cpp.Pointer<ModelAnimation>;
+    static function LoadModelAnimations(fileName: String, animCount: cpp.RawPointer<Int>): cpp.RawPointer<ModelAnimation>;
     
     /**
      * Update model animation pose
@@ -4670,7 +4670,7 @@ extern class Raylib {
      * @param animCount cpp: int
      */
     @:native("UnloadModelAnimations")
-    static function UnloadModelAnimations(animations: cpp.Pointer<ModelAnimation>, animCount: Int): Void;
+    static function UnloadModelAnimations(animations: cpp.RawPointer<ModelAnimation>, animCount: Int): Void;
     
     /**
      * Check model animation skeleton match
@@ -4815,7 +4815,7 @@ extern class Raylib {
      * @param dataSize cpp: int
      */
     @:native("LoadWaveFromMemory")
-    static function LoadWaveFromMemory(fileType: String, fileData: cpp.Pointer<cpp.UInt8>, dataSize: Int): Wave;
+    static function LoadWaveFromMemory(fileType: String, fileData: cpp.RawPointer<cpp.UInt8>, dataSize: Int): Wave;
     
     /**
      * Checks if wave data is ready
@@ -4865,7 +4865,7 @@ extern class Raylib {
      * @param sampleCount cpp: int
      */
     @:native("UpdateSound")
-    static function UpdateSound(sound: Sound, data: cpp.Pointer<Void>, sampleCount: Int): Void;
+    static function UpdateSound(sound: Sound, data: cpp.RawPointer<Void>, sampleCount: Int): Void;
     
     /**
      * Unload wave data
@@ -4992,7 +4992,7 @@ extern class Raylib {
      * @param finalFrame cpp: int
      */
     @:native("WaveCrop")
-    static function WaveCrop(wave: cpp.Pointer<Wave>, initFrame: Int, finalFrame: Int): Void;
+    static function WaveCrop(wave: cpp.RawPointer<Wave>, initFrame: Int, finalFrame: Int): Void;
     
     /**
      * Convert wave data to desired format
@@ -5003,7 +5003,7 @@ extern class Raylib {
      * @param channels cpp: int
      */
     @:native("WaveFormat")
-    static function WaveFormat(wave: cpp.Pointer<Wave>, sampleRate: Int, sampleSize: Int, channels: Int): Void;
+    static function WaveFormat(wave: cpp.RawPointer<Wave>, sampleRate: Int, sampleSize: Int, channels: Int): Void;
     
     /**
      * Load samples data from wave as a 32bit float data array
@@ -5011,7 +5011,7 @@ extern class Raylib {
      * @param wave cpp: Wave
      */
     @:native("LoadWaveSamples")
-    static function LoadWaveSamples(wave: Wave): cpp.Pointer<Float>;
+    static function LoadWaveSamples(wave: Wave): cpp.RawPointer<Float>;
     
     /**
      * Unload samples data loaded with LoadWaveSamples()
@@ -5019,7 +5019,7 @@ extern class Raylib {
      * @param samples cpp: float *
      */
     @:native("UnloadWaveSamples")
-    static function UnloadWaveSamples(samples: cpp.Pointer<Float>): Void;
+    static function UnloadWaveSamples(samples: cpp.RawPointer<Float>): Void;
     
     /**
      * Load music stream from file
@@ -5037,7 +5037,7 @@ extern class Raylib {
      * @param dataSize cpp: int
      */
     @:native("LoadMusicStreamFromMemory")
-    static function LoadMusicStreamFromMemory(fileType: String, data: cpp.Pointer<cpp.UInt8>, dataSize: Int): Music;
+    static function LoadMusicStreamFromMemory(fileType: String, data: cpp.RawPointer<cpp.UInt8>, dataSize: Int): Music;
     
     /**
      * Checks if a music stream is ready
@@ -5189,7 +5189,7 @@ extern class Raylib {
      * @param frameCount cpp: int
      */
     @:native("UpdateAudioStream")
-    static function UpdateAudioStream(stream: AudioStream, data: cpp.Pointer<Void>, frameCount: Int): Void;
+    static function UpdateAudioStream(stream: AudioStream, data: cpp.RawPointer<Void>, frameCount: Int): Void;
     
     /**
      * Check if any audio stream buffers requires refill

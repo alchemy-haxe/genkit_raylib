@@ -1,6 +1,7 @@
 @:unreflective
-class FontType {
-    static public var FONT_DEFAULT: Int = 0;
-    static public var FONT_BITMAP: Int = 1;
-    static public var FONT_SDF: Int = 2;
+@:native("FontType")
+extern class FontType {
+    static public var FONT_DEFAULT: Int;
+    static public var FONT_BITMAP: Int;
+    static public var FONT_SDF: Int;
 }
