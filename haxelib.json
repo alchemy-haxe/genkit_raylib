@@ -1,0 +1,12 @@
+{
+    "name": "genkit_raylib",
+    "url" : "https://github.com/mikaib",
+    "license": "MIT",
+    "tags": ["bindings"],
+    "description": "Raylib bindings using genkit",
+    "version": "0.0.1",
+    "classPath": "source/",
+    "releasenote": "",
+    "contributors": ["mikaib"],
+    "dependencies": {}
+  }
